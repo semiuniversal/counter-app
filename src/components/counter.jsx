@@ -2,20 +2,31 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
-    tags: ["tag1", "tag2", "tag3"]
+    count: 0
+  };
+
+  // constructor() {
+  //   super();
+  //   this.handleIncrement = this.handleIncrement.bind(this);
+  // }
+
+  handleIncrement = () => {
+    // The syntax '= () =>' replaces the constructor.
+    // Without this it would just be written
+    // 'handleIncrement() {' and we'd need the constructor.
+    this.setState({ count: this.state.count + 1 });
   };
 
   render() {
     return (
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        <ul>
-          {this.state.tags.map(tag => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </div>
     );
   }
